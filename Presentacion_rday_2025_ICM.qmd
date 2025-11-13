@@ -1,0 +1,397 @@
+---
+title: "Presentación R Day 2025 — Martingalas inductivas conformales"
+subtitle: "ICM — Inductive Conformal Martingales"
+author: "Cristhian Quiroz Castaño"
+date: today
+lang: es
+format:
+  revealjs:
+    theme: theme.scss
+    transition: fade
+    background-transition: fade
+    highlight-style: ayu-mirage
+    slide-number: true
+    auto-animate: true
+code-link: true
+execute:
+  echo: true
+  warning: false
+  cache: false
+  freeze: auto
+toc: false
+editor: visual
+---
+
+# Agenda
+<br/>
+
+::: {.incremental}
+-   Objetivo y motivación
+-   Puntos de cambio
+-   Idea general de ICM
+-   Implementación en R
+-   Resultados de experimentos
+-   Conclusiones
+:::
+
+# Objetivo
+<br/>
+
+::: {.incremental}
+-   Introducir las martingalas inductivas conformales (ICM).
+-   Presentar la implementación en R de los métodos
+-   Presentar los experimentos realizados y sus respectivos resultados.
+:::
+
+# Motivación
+<br/>
+
+::: {.incremental}
+-   Detección de puntos de cambio es un problema transversal a muchas áreas.
+-   ICM presenta un método no parámetrico novedoso.
+-   Aumentar el catálogo de métodos ofrecidos por la librería tidychangepoint.
+:::
+
+# Puntos de cambio
+
+El problema de puntos de cambio se formula de la siguiente manera:
+
+-   Sea $(z_1, z_2, \dots, z_n, \dots)$ un conjunto de observaciones.
+-   Suponemos que existe un índice $\theta$ tal que $z_1, z_2, \dots, z_{\theta-1} \sim f_0(z)$ y $z_{\theta}, z_{\theta+1}, \dots \sim f_1(z)$.
+-   Ese $\theta$ es lo que consideramos el punto de cambio.
+-   Nuestro objetivo es identificar $\theta$ tan pronto como sea posible.
+
+# Idea general (ICM)
+<br/>
+
+<style>
+.arrow-flow {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.arrow-flow .arrow {
+  background: #1c4f87;
+  color: #fff;
+  padding: 0.7rem 1.6rem;
+  font-weight: 600;
+  text-align: center;
+  min-width: 12rem;
+  clip-path: polygon(0 0, calc(100% - 1.2rem) 0, 100% 50%, calc(100% - 1.2rem) 100%, 0 100%, 1.2rem 50%);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+</style>
+
+<div class="arrow-flow">
+  <div class="arrow">Observaciones intercambiables</div>
+  <div class="arrow">Medida de no conformidad</div>
+  <div class="arrow">P-valores</div>
+  <div class="arrow">Función de apuesta</div>
+  <div class="arrow">Martingala</div>
+  <div class="arrow">Alarma</div>
+</div>
+
+
+## Medida de no conformidad & P-valor
+
+::: goal
+Definimos la medida de no conformidad como:
+:::
+
+$$
+\alpha_i = \mathcal{A}(z_{i}, \mathcal{Z})
+$$
+
+::: {style="height:1.6rem;"}
+:::
+
+::: goal
+Con esta medida construimos el $p$-valor de la siguiente manera:
+:::
+
+$$
+p_t = \frac{\lvert\{i \le t : \alpha_i > \alpha_t\}\rvert + U\,\lvert\{i \le t : \alpha_i = \alpha_t\}\rvert}{t}
+$$
+
+## Función de apuesta
+
+::: goal
+Necesitamos un mecanismo que nos permita "hacer apuestas":
+:::
+
+$$
+g(p): [0,1] \longrightarrow \mathbb{R}^+
+$$
+
+::: goal
+Esta función debe satisfacer la siguiente propiedad:
+:::
+
+$$
+\int_{0}^{1} g(p)\,dp = 1
+$$
+
+## Martingala
+::: goal
+La martingala se construye de la siguiente manera:
+:::
+
+$$
+S_0 = 1, \qquad S_n = \prod_{i=1}^{n} g(p_i)
+$$
+
+::: goal
+La construcción anterior garantiza que se cumple la condición de martingala:
+:::
+
+$$
+\mathbb{E}\!\left[S_{n+1} \mid S_0, S_1, \dots, S_n\right] = S_n
+$$
+
+
+## Intercambiabilidad
+
+::: goal
+Asumiremos que las observaciones son intercambiables, es decir:
+:::
+<br/>
+
+$$
+(Z_1, Z_2, \dots, Z_n) \stackrel{d}{=} (Z_{\pi(1)}, Z_{\pi(2)}, \dots, Z_{\pi(n)})
+$$
+
+<br/>
+
+Esta suposición garantiza que:
+$$
+\{p_i\}_{i=1}^{n} \sim Unif(0,1)
+$$
+
+## Detección de puntos de cambio.
+
+::: goal
+Queremos determinar si ocurre un cambio y definimos el siguiente mecanismo de detección:
+:::
+
+$$
+\tau = \inf\{i \mid S_i \ge h\}
+$$
+
+::: goal
+Como la construcción es una martingala, se cumple la desigualdad de Ville, lo que entrega un umbral con garantías para las alarmas:
+:::
+
+$$
+\mathbb{P}\!\left(\exists n \mid S_n \ge \frac{1}{\alpha}\right) \le \alpha
+$$
+
+
+# Implementación en R
+
+-   Medidas de no conformidad
+-   Función de apuesta
+-   ICM
+
+## Medida de no conformidad
+
+`Desviación absoluta a la mediana`
+
+```{r}
+#| eval: false
+Non_conformity_MAD <- function(xi, training_set, K=NULL,...){
+  med <- median(training_set)
+  mad_val <- median(abs(training_set - med))
+  score <- abs(xi - med) / (mad_val + 1e-8)
+  return(score)
+}
+```
+
+`Rango intercuartílico`
+
+```{r}
+#| eval: false
+Non_conformity_IQR <- function(xi, training_set, k=NULL,...){
+  qs <- as.numeric(quantile(training_set, 
+              probs = c(0.25, 0.5, 0.75), type = 8, 
+              names = FALSE))
+  width <- max(qs[3] - qs[1], 1e-8)
+  score <- abs(xi - qs[2]) / width
+  return(score)
+}
+```
+
+
+## Medida de no conformidad
+
+`Desviación absoluta a la mediana`
+
+```{r}
+#| eval: false
+#| code-line-numbers: "4"
+Non_conformity_MAD <- function(xi, training_set, K=NULL,...){
+  med <- median(training_set)
+  mad_val <- median(abs(training_set - med))
+  score <- abs(xi - med) / (mad_val + 1e-8)
+  return(score)
+}
+```
+
+`Rango intercuartílico`
+
+```{r}
+#| eval: false
+#| code-line-numbers: "6"
+Non_conformity_IQR <- function(xi, training_set, k=NULL,...){
+  qs <- as.numeric(quantile(training_set, 
+              probs = c(0.25, 0.5, 0.75), type = 8, 
+              names = FALSE))
+  width <- max(qs[3] - qs[1], 1e-8)
+  score <- abs(xi - qs[2]) / width
+  return(score)
+}
+```
+
+## Funciones de apuesta
+<br/>
+
+Firmas de las funciones de apuesta implementadas.
+```{r}
+#| eval: false
+
+Constant_BF <- function(p_values, new_p, i, ...)
+Mixture_BF <- function(p_values, new_p, i, ...)
+Kernel_BF <- function(p_values, new_p, i, ...)
+histogram_BF <- function(p_values, new_p, num_bins = 2L, ...)
+```
+
+R provee muchas facilidades para implementar funciones de apuesta; un ejemplo a resaltar es `stats::density` para la función de kernel.
+
+## ICM
+
+::: {.small}
+Detección de un punto de cambio
+:::
+```{r}
+#| eval: false
+ICM <- function(training_set, stream_data,
+                non_conformity_measure,
+                betting_function,
+                th = 1, params_bf = list(), ...)
+```
+
+::: {.small}
+Detección de múltiples puntos de cambio
+:::
+
+```{r}
+#| eval: false
+ICM_multi <- function(training_set, stream_data,
+                      non_conformity_measure,
+                      betting_function,
+                      th = 1, params_bf = list(), ...)
+```
+
+::: {.small}
+Detección de múltiples puntos de cambio con reentrenamiento
+:::
+
+```{r}
+#| eval: false
+ICM_multi_adaptive <- function(stream_data,
+                               non_conformity_measure,
+                               betting_function,
+                               training_set = NULL, training_size = NULL,
+                               m_retrain = NULL, guard_band = 0,
+                               ...)
+```
+
+## ICM
+
+::: {.small}
+Detección de un punto de cambio
+:::
+```{r}
+#| eval: false
+#| code-line-numbers: "2-3"
+ICM <- function(training_set, stream_data,
+                non_conformity_measure,
+                betting_function,
+                th = 1, params_bf = list(), ...)
+```
+
+::: {.small}
+Detección de múltiples puntos de cambio
+:::
+
+```{r}
+#| eval: false
+#| code-line-numbers: "2-3"
+ICM_multi <- function(training_set, stream_data,
+                      non_conformity_measure,
+                      betting_function,
+                      th = 1, params_bf = list(), ...)
+```
+
+::: {.small}
+Detección de múltiples puntos de cambio con reentrenamiento
+:::
+
+```{r}
+#| eval: false
+#| code-line-numbers: "2-3"
+ICM_multi_adaptive <- function(stream_data,
+                               non_conformity_measure,
+                               betting_function,
+                               training_set = NULL, training_size = NULL,
+                               m_retrain = NULL, guard_band = 0,
+                               ...)
+```
+
+## Experimentos y resultados
+Todos los experimentos descritos en esta sección aprovechan las características de los paquetes `future`, `purrr`, `tidyr`, `dplyr` y `ggplot2`.
+<br/>
+
+::: {.center}
+![Librerias R](Presentacion_rday_2025_ICM_files/figure-revealjs/libreriashexalogor.png){width=55%}
+:::
+
+## Sensibilidad al umbral
+
+-   Conjunto de entrenamiento $\mathcal{Z}$ de tamaño $m = 200$.
+-   Observaciones de entrenamiento y primer segmento $z_1, \dots, z_{\theta-1}$ con distribución $\mathcal{N}(0, 1)$.
+-   Segmento posterior al cambio $z_{\theta}, z_{\theta+1}, \dots$ con distribución $\mathcal{N}(\mu_1, 1)$.
+-   Métricas: probabilidad de falsa alarma $\mathbb{P}(\tau \le \theta)$ y retraso medio $\mathbb{E}(\tau - \theta \mid \tau > \theta)$.
+
+## Sensibilidad KNN
+
+## Precisión de los métodos múltiples
+
+# Conclusiones
+
+placeholder
+
+## Referencias
+
+-   Volkhonskiy, D., Burnaev, E., Nouretdinov, I., Gammerman, A., Vovk, V. (2017). *Inductive Conformal Martingales for Change-Point Detection*. En **Conformal and Probabilistic Prediction and Applications**, PMLR 60, 1--22.
+-   Kato, Y., Tax, D.M.J., Loog, M. (2023). *A Review of Nonconformity Measures for Conformal Prediction in Regression*. En **Conformal and Probabilistic Prediction with Applications**, PMLR 204, 1--15.
+-   Eliades, C., Papadopoulos, H. (2020). *A Histogram based Betting Function for Conformal Martingales*. En **Conformal and Probabilistic Prediction and Applications**, PMLR 128, 1--14.
+
+## Referencias (cont.)
+
+-   Eliades, C., Papadopoulos, H. (2021). *Using Inductive Conformal Martingales for Addressing Concept Drift in Data Stream Classification*. En **Conformal and Probabilistic Prediction and Applications**, PMLR 152, 1--20.
+-   Wickham, H., Henry, L. (2025). *purrr: Functional Programming Tools*. R package version 1.1.0, <https://purrr.tidyverse.org/>.
+-   Wickham, H., Francois, R., Henry, L., Muller, K., Vaughan, D. (2025). *dplyr: A Grammar of Data Manipulation*. R package version 1.1.4, <https://dplyr.tidyverse.org/>.
+
+
+## Referencias (cont.)
+
+-   Wickham, H., Vaughan, D., Girlich, M. (2025). *tidyr: Tidy Messy Data*. R package version 1.3.1, <https://tidyr.tidyverse.org/>.
+-   Wickham, H. (2016). *ggplot2: Elegant Graphics for Data Analysis*. Springer-Verlag New York.
+-   Bengtsson, H. (2021). *A Unifying Framework for Parallel and Distributed Processing in R using Futures*. **The R Journal**, 13(2), 208--227. <https://doi.org/10.32614/RJ-2021-048>.
+
+# Gracias
+
+-   Correo: cquirozc1@eafit.edu.co
+-   GitHub: https://github.com/CQuiorzC

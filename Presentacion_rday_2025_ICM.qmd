@@ -23,9 +23,10 @@ editor: visual
 ---
 
 # Agenda
+
 <br/>
 
-::: {.incremental}
+::: incremental
 -   Objetivo y motivación
 -   Puntos de cambio
 -   Idea general de ICM
@@ -35,18 +36,20 @@ editor: visual
 :::
 
 # Objetivo
+
 <br/>
 
-::: {.incremental}
+::: incremental
 -   Introducir las martingalas inductivas conformales (ICM).
 -   Presentar la implementación en R de los métodos
 -   Presentar los experimentos realizados y sus respectivos resultados.
 :::
 
 # Motivación
+
 <br/>
 
-::: {.incremental}
+::: incremental
 -   Detección de puntos de cambio es un problema transversal a muchas áreas.
 -   ICM presenta un método no parámetrico novedoso.
 -   Aumentar el catálogo de métodos ofrecidos por la librería tidychangepoint.
@@ -62,8 +65,10 @@ El problema de puntos de cambio se formula de la siguiente manera:
 -   Nuestro objetivo es identificar $\theta$ tan pronto como sea posible.
 
 # Idea general (ICM)
+
 <br/>
 
+```{=html}
 <style>
 .arrow-flow {
   display: flex;
@@ -83,16 +88,33 @@ El problema de puntos de cambio se formula de la siguiente manera:
   box-shadow: 0 2px 6px rgba(0,0,0,0.25);
 }
 </style>
+```
 
-<div class="arrow-flow">
-  <div class="arrow">Observaciones intercambiables</div>
-  <div class="arrow">Medida de no conformidad</div>
-  <div class="arrow">P-valores</div>
-  <div class="arrow">Función de apuesta</div>
-  <div class="arrow">Martingala</div>
-  <div class="arrow">Alarma</div>
-</div>
+::::::::: arrow-flow
+::: arrow
+Observaciones intercambiables
+:::
 
+::: arrow
+Medida de no conformidad
+:::
+
+::: arrow
+P-valores
+:::
+
+::: arrow
+Función de apuesta
+:::
+
+::: arrow
+Martingala
+:::
+
+::: arrow
+Alarma
+:::
+:::::::::
 
 ## Medida de no conformidad & P-valor
 
@@ -134,6 +156,7 @@ $$
 $$
 
 ## Martingala
+
 ::: goal
 La martingala se construye de la siguiente manera:
 :::
@@ -150,12 +173,12 @@ $$
 \mathbb{E}\!\left[S_{n+1} \mid S_0, S_1, \dots, S_n\right] = S_n
 $$
 
-
 ## Intercambiabilidad
 
 ::: goal
 Asumiremos que las observaciones son intercambiables, es decir:
 :::
+
 <br/>
 
 $$
@@ -164,8 +187,7 @@ $$
 
 <br/>
 
-Esta suposición garantiza que:
-$$
+Esta suposición garantiza que: $$
 \{p_i\}_{i=1}^{n} \sim Unif(0,1)
 $$
 
@@ -186,7 +208,6 @@ Como la construcción es una martingala, se cumple la desigualdad de Ville, lo q
 $$
 \mathbb{P}\!\left(\exists n \mid S_n \ge \frac{1}{\alpha}\right) \le \alpha
 $$
-
 
 # Implementación en R
 
@@ -222,7 +243,6 @@ Non_conformity_IQR <- function(xi, training_set, k=NULL,...){
 }
 ```
 
-
 ## Medida de no conformidad
 
 `Desviación absoluta a la mediana`
@@ -254,9 +274,11 @@ Non_conformity_IQR <- function(xi, training_set, k=NULL,...){
 ```
 
 ## Funciones de apuesta
+
 <br/>
 
 Firmas de las funciones de apuesta implementadas.
+
 ```{r}
 #| eval: false
 
@@ -270,9 +292,10 @@ R provee muchas facilidades para implementar funciones de apuesta; un ejemplo a 
 
 ## ICM
 
-::: {.small}
+::: small
 Detección de un punto de cambio
 :::
+
 ```{r}
 #| eval: false
 ICM <- function(training_set, stream_data,
@@ -281,7 +304,7 @@ ICM <- function(training_set, stream_data,
                 th = 1, params_bf = list(), ...)
 ```
 
-::: {.small}
+::: small
 Detección de múltiples puntos de cambio
 :::
 
@@ -293,7 +316,7 @@ ICM_multi <- function(training_set, stream_data,
                       th = 1, params_bf = list(), ...)
 ```
 
-::: {.small}
+::: small
 Detección de múltiples puntos de cambio con reentrenamiento
 :::
 
@@ -309,9 +332,10 @@ ICM_multi_adaptive <- function(stream_data,
 
 ## ICM
 
-::: {.small}
+::: small
 Detección de un punto de cambio
 :::
+
 ```{r}
 #| eval: false
 #| code-line-numbers: "2-3"
@@ -321,7 +345,7 @@ ICM <- function(training_set, stream_data,
                 th = 1, params_bf = list(), ...)
 ```
 
-::: {.small}
+::: small
 Detección de múltiples puntos de cambio
 :::
 
@@ -334,7 +358,7 @@ ICM_multi <- function(training_set, stream_data,
                       th = 1, params_bf = list(), ...)
 ```
 
-::: {.small}
+::: small
 Detección de múltiples puntos de cambio con reentrenamiento
 :::
 
@@ -350,11 +374,11 @@ ICM_multi_adaptive <- function(stream_data,
 ```
 
 ## Experimentos y resultados
-Todos los experimentos descritos en esta sección aprovechan las características de los paquetes `future`, `purrr`, `tidyr`, `dplyr` y `ggplot2`.
-<br/>
 
-::: {.center}
-![Librerias R](Presentacion_rday_2025_ICM_files/figure-revealjs/libreriashexalogor.png){width=55%}
+Todos los experimentos descritos en esta sección aprovechan las características de los paquetes `future`, `purrr`, `tidyr`, `dplyr` y `ggplot2`. <br/>
+
+::: center
+![Librerias R](Presentacion_rday_2025_ICM_files/figure-revealjs/libreriashexalogor.png){width="55%"}
 :::
 
 ## Sensibilidad al umbral
@@ -384,7 +408,6 @@ placeholder
 -   Wickham, H., Henry, L. (2025). *purrr: Functional Programming Tools*. R package version 1.1.0, <https://purrr.tidyverse.org/>.
 -   Wickham, H., Francois, R., Henry, L., Muller, K., Vaughan, D. (2025). *dplyr: A Grammar of Data Manipulation*. R package version 1.1.4, <https://dplyr.tidyverse.org/>.
 
-
 ## Referencias (cont.)
 
 -   Wickham, H., Vaughan, D., Girlich, M. (2025). *tidyr: Tidy Messy Data*. R package version 1.3.1, <https://tidyr.tidyverse.org/>.
@@ -393,5 +416,5 @@ placeholder
 
 # Gracias
 
--   Correo: cquirozc1@eafit.edu.co
+-   Correo: cquirozc1\@eafit.edu.co
 -   GitHub: https://github.com/CQuiorzC

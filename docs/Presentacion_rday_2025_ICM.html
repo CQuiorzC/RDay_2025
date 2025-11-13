@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="es"><head>
-<script src="Presentacion_rday_2025_ICM_files/libs/clipboard/clipboard.min.js"></script>
-<script src="Presentacion_rday_2025_ICM_files/libs/quarto-html/tabby.min.js"></script>
-<script src="Presentacion_rday_2025_ICM_files/libs/quarto-html/popper.min.js"></script>
-<script src="Presentacion_rday_2025_ICM_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="Presentacion_rday_2025_ICM_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Presentacion_rday_2025_ICM_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="Presentacion_rday_2025_ICM_files/libs/quarto-html/quarto-syntax-highlighting-a75ea84b2aefd0354fe7c93493611467.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-a75ea84b2aefd0354fe7c93493611467.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.33">
 <meta name="author" content="Cristhian Quiroz Castaño">
 <meta name="dcterms.date" content="2025-11-13">
-<title>Presentación R Day 2025 — Martingalas inductivas conformales</title>
+<title>R Day 2025 – Presentación R Day 2025 — Martingalas inductivas conformales</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-<link rel="stylesheet" href="Presentacion_rday_2025_ICM_files/libs/revealjs/dist/reset.css">
-<link rel="stylesheet" href="Presentacion_rday_2025_ICM_files/libs/revealjs/dist/reveal.css">
+<link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
 <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -96,11 +96,11 @@
     code span.vs { color: #bae67e; } /* VerbatimString */
     code span.wa { color: #f28779; } /* Warning */
   </style>
-<link rel="stylesheet" href="Presentacion_rday_2025_ICM_files/libs/revealjs/dist/theme/quarto-b7d5c2e4733d4a9b6a8139c30ac2d570.css">
-<link href="Presentacion_rday_2025_ICM_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-<link href="Presentacion_rday_2025_ICM_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-<link href="Presentacion_rday_2025_ICM_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-<link href="Presentacion_rday_2025_ICM_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-b7d5c2e4733d4a9b6a8139c30ac2d570.css">
+<link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
 <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -234,6 +234,7 @@ Cristhian Quiroz Castaño
 <li>Ese <span class="math inline">\(\theta\)</span> es lo que consideramos el punto de cambio.</li>
 <li>Nuestro objetivo es identificar <span class="math inline">\(\theta\)</span> tan pronto como sea posible.</li>
 </ul></section><section><section id="idea-general-icm" class="title-slide slide level1 center"><h1>Idea general (ICM)</h1>
+<p><br></p>
 <style>
 .arrow-flow {
   display: flex;
@@ -255,22 +256,22 @@ Cristhian Quiroz Castaño
 </style>
 <div class="arrow-flow">
 <div class="arrow">
-Observaciones intercambiables
+<p>Observaciones intercambiables</p>
 </div>
 <div class="arrow">
-Medida de no conformidad
+<p>Medida de no conformidad</p>
 </div>
 <div class="arrow">
-P-valores
+<p>P-valores</p>
 </div>
 <div class="arrow">
-Función de apuesta
+<p>Función de apuesta</p>
 </div>
 <div class="arrow">
-Martingala
+<p>Martingala</p>
 </div>
 <div class="arrow">
-Alarma
+<p>Alarma</p>
 </div>
 </div>
 </section><section id="medida-de-no-conformidad-p-valor" class="slide level2"><h2>Medida de no conformidad &amp; P-valor</h2>
@@ -348,53 +349,53 @@ S_0 = 1, \qquad S_n = \prod_{i=1}^{n} g(p_i)
 </ul></section><section id="medida-de-no-conformidad" class="slide level2"><h2>Medida de no conformidad</h2>
 <p><code>Desviación absoluta a la mediana</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>Non_conformity_MAD <span class="ot">&lt;-</span> <span class="cf">function</span>(xi, training_set, <span class="at">K=</span><span class="cn">NULL</span>,...){</span>
-<span id="cb1-2"><a href=""></a>  med <span class="ot">&lt;-</span> <span class="fu">median</span>(training_set)</span>
-<span id="cb1-3"><a href=""></a>  mad_val <span class="ot">&lt;-</span> <span class="fu">median</span>(<span class="fu">abs</span>(training_set <span class="sc">-</span> med))</span>
-<span id="cb1-4"><a href=""></a>  score <span class="ot">&lt;-</span> <span class="fu">abs</span>(xi <span class="sc">-</span> med) <span class="sc">/</span> (mad_val <span class="sc">+</span> <span class="fl">1e-8</span>)</span>
-<span id="cb1-5"><a href=""></a>  <span class="fu">return</span>(score)</span>
-<span id="cb1-6"><a href=""></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>Non_conformity_MAD <span class="ot">&lt;-</span> <span class="cf">function</span>(xi, training_set, <span class="at">K=</span><span class="cn">NULL</span>,...){</span>
+<span id="cb1-2"><a></a>  med <span class="ot">&lt;-</span> <span class="fu">median</span>(training_set)</span>
+<span id="cb1-3"><a></a>  mad_val <span class="ot">&lt;-</span> <span class="fu">median</span>(<span class="fu">abs</span>(training_set <span class="sc">-</span> med))</span>
+<span id="cb1-4"><a></a>  score <span class="ot">&lt;-</span> <span class="fu">abs</span>(xi <span class="sc">-</span> med) <span class="sc">/</span> (mad_val <span class="sc">+</span> <span class="fl">1e-8</span>)</span>
+<span id="cb1-5"><a></a>  <span class="fu">return</span>(score)</span>
+<span id="cb1-6"><a></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>Rango intercuartílico</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>Non_conformity_IQR <span class="ot">&lt;-</span> <span class="cf">function</span>(xi, training_set, <span class="at">k=</span><span class="cn">NULL</span>,...){</span>
-<span id="cb2-2"><a href=""></a>  qs <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">quantile</span>(training_set, </span>
-<span id="cb2-3"><a href=""></a>              <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>), <span class="at">type =</span> <span class="dv">8</span>, </span>
-<span id="cb2-4"><a href=""></a>              <span class="at">names =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb2-5"><a href=""></a>  width <span class="ot">&lt;-</span> <span class="fu">max</span>(qs[<span class="dv">3</span>] <span class="sc">-</span> qs[<span class="dv">1</span>], <span class="fl">1e-8</span>)</span>
-<span id="cb2-6"><a href=""></a>  score <span class="ot">&lt;-</span> <span class="fu">abs</span>(xi <span class="sc">-</span> qs[<span class="dv">2</span>]) <span class="sc">/</span> width</span>
-<span id="cb2-7"><a href=""></a>  <span class="fu">return</span>(score)</span>
-<span id="cb2-8"><a href=""></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>Non_conformity_IQR <span class="ot">&lt;-</span> <span class="cf">function</span>(xi, training_set, <span class="at">k=</span><span class="cn">NULL</span>,...){</span>
+<span id="cb2-2"><a></a>  qs <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">quantile</span>(training_set, </span>
+<span id="cb2-3"><a></a>              <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>), <span class="at">type =</span> <span class="dv">8</span>, </span>
+<span id="cb2-4"><a></a>              <span class="at">names =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb2-5"><a></a>  width <span class="ot">&lt;-</span> <span class="fu">max</span>(qs[<span class="dv">3</span>] <span class="sc">-</span> qs[<span class="dv">1</span>], <span class="fl">1e-8</span>)</span>
+<span id="cb2-6"><a></a>  score <span class="ot">&lt;-</span> <span class="fu">abs</span>(xi <span class="sc">-</span> qs[<span class="dv">2</span>]) <span class="sc">/</span> width</span>
+<span id="cb2-7"><a></a>  <span class="fu">return</span>(score)</span>
+<span id="cb2-8"><a></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="medida-de-no-conformidad-1" class="slide level2"><h2>Medida de no conformidad</h2>
 <p><code>Desviación absoluta a la mediana</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>Non_conformity_MAD <span class="ot">&lt;-</span> <span class="cf">function</span>(xi, training_set, <span class="at">K=</span><span class="cn">NULL</span>,...){</span>
-<span id="cb3-2"><a href=""></a>  med <span class="ot">&lt;-</span> <span class="fu">median</span>(training_set)</span>
-<span id="cb3-3"><a href=""></a>  mad_val <span class="ot">&lt;-</span> <span class="fu">median</span>(<span class="fu">abs</span>(training_set <span class="sc">-</span> med))</span>
-<span id="cb3-4"><a href=""></a>  score <span class="ot">&lt;-</span> <span class="fu">abs</span>(xi <span class="sc">-</span> med) <span class="sc">/</span> (mad_val <span class="sc">+</span> <span class="fl">1e-8</span>)</span>
-<span id="cb3-5"><a href=""></a>  <span class="fu">return</span>(score)</span>
-<span id="cb3-6"><a href=""></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>Non_conformity_MAD <span class="ot">&lt;-</span> <span class="cf">function</span>(xi, training_set, <span class="at">K=</span><span class="cn">NULL</span>,...){</span>
+<span id="cb3-2"><a></a>  med <span class="ot">&lt;-</span> <span class="fu">median</span>(training_set)</span>
+<span id="cb3-3"><a></a>  mad_val <span class="ot">&lt;-</span> <span class="fu">median</span>(<span class="fu">abs</span>(training_set <span class="sc">-</span> med))</span>
+<span id="cb3-4"><a></a>  score <span class="ot">&lt;-</span> <span class="fu">abs</span>(xi <span class="sc">-</span> med) <span class="sc">/</span> (mad_val <span class="sc">+</span> <span class="fl">1e-8</span>)</span>
+<span id="cb3-5"><a></a>  <span class="fu">return</span>(score)</span>
+<span id="cb3-6"><a></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>Rango intercuartílico</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>Non_conformity_IQR <span class="ot">&lt;-</span> <span class="cf">function</span>(xi, training_set, <span class="at">k=</span><span class="cn">NULL</span>,...){</span>
-<span id="cb4-2"><a href=""></a>  qs <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">quantile</span>(training_set, </span>
-<span id="cb4-3"><a href=""></a>              <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>), <span class="at">type =</span> <span class="dv">8</span>, </span>
-<span id="cb4-4"><a href=""></a>              <span class="at">names =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb4-5"><a href=""></a>  width <span class="ot">&lt;-</span> <span class="fu">max</span>(qs[<span class="dv">3</span>] <span class="sc">-</span> qs[<span class="dv">1</span>], <span class="fl">1e-8</span>)</span>
-<span id="cb4-6"><a href=""></a>  score <span class="ot">&lt;-</span> <span class="fu">abs</span>(xi <span class="sc">-</span> qs[<span class="dv">2</span>]) <span class="sc">/</span> width</span>
-<span id="cb4-7"><a href=""></a>  <span class="fu">return</span>(score)</span>
-<span id="cb4-8"><a href=""></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>Non_conformity_IQR <span class="ot">&lt;-</span> <span class="cf">function</span>(xi, training_set, <span class="at">k=</span><span class="cn">NULL</span>,...){</span>
+<span id="cb4-2"><a></a>  qs <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">quantile</span>(training_set, </span>
+<span id="cb4-3"><a></a>              <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>), <span class="at">type =</span> <span class="dv">8</span>, </span>
+<span id="cb4-4"><a></a>              <span class="at">names =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb4-5"><a></a>  width <span class="ot">&lt;-</span> <span class="fu">max</span>(qs[<span class="dv">3</span>] <span class="sc">-</span> qs[<span class="dv">1</span>], <span class="fl">1e-8</span>)</span>
+<span id="cb4-6"><a></a>  score <span class="ot">&lt;-</span> <span class="fu">abs</span>(xi <span class="sc">-</span> qs[<span class="dv">2</span>]) <span class="sc">/</span> width</span>
+<span id="cb4-7"><a></a>  <span class="fu">return</span>(score)</span>
+<span id="cb4-8"><a></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="funciones-de-apuesta" class="slide level2"><h2>Funciones de apuesta</h2>
 <p><br></p>
 <p>Firmas de las funciones de apuesta implementadas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>Constant_BF <span class="ot">&lt;-</span> <span class="cf">function</span>(p_values, new_p, i, ...)</span>
-<span id="cb5-2"><a href=""></a>Mixture_BF <span class="ot">&lt;-</span> <span class="cf">function</span>(p_values, new_p, i, ...)</span>
-<span id="cb5-3"><a href=""></a>Kernel_BF <span class="ot">&lt;-</span> <span class="cf">function</span>(p_values, new_p, i, ...)</span>
-<span id="cb5-4"><a href=""></a>histogram_BF <span class="ot">&lt;-</span> <span class="cf">function</span>(p_values, new_p, <span class="at">num_bins =</span> <span class="dv">2</span>L, ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>Constant_BF <span class="ot">&lt;-</span> <span class="cf">function</span>(p_values, new_p, i, ...)</span>
+<span id="cb5-2"><a></a>Mixture_BF <span class="ot">&lt;-</span> <span class="cf">function</span>(p_values, new_p, i, ...)</span>
+<span id="cb5-3"><a></a>Kernel_BF <span class="ot">&lt;-</span> <span class="cf">function</span>(p_values, new_p, i, ...)</span>
+<span id="cb5-4"><a></a>histogram_BF <span class="ot">&lt;-</span> <span class="cf">function</span>(p_values, new_p, <span class="at">num_bins =</span> <span class="dv">2</span>L, ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>R provee muchas facilidades para implementar funciones de apuesta; un ejemplo a resaltar es <code><a href="https://rdrr.io/r/stats/density.html">stats::density</a></code> para la función de kernel.</p>
 </section><section id="icm" class="slide level2"><h2>ICM</h2>
@@ -402,60 +403,60 @@ S_0 = 1, \qquad S_n = \prod_{i=1}^{n} g(p_i)
 <p>Detección de un punto de cambio</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>ICM <span class="ot">&lt;-</span> <span class="cf">function</span>(training_set, stream_data,</span>
-<span id="cb6-2"><a href=""></a>                non_conformity_measure,</span>
-<span id="cb6-3"><a href=""></a>                betting_function,</span>
-<span id="cb6-4"><a href=""></a>                <span class="at">th =</span> <span class="dv">1</span>, <span class="at">params_bf =</span> <span class="fu">list</span>(), ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>ICM <span class="ot">&lt;-</span> <span class="cf">function</span>(training_set, stream_data,</span>
+<span id="cb6-2"><a></a>                non_conformity_measure,</span>
+<span id="cb6-3"><a></a>                betting_function,</span>
+<span id="cb6-4"><a></a>                <span class="at">th =</span> <span class="dv">1</span>, <span class="at">params_bf =</span> <span class="fu">list</span>(), ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="small">
 <p>Detección de múltiples puntos de cambio</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>ICM_multi <span class="ot">&lt;-</span> <span class="cf">function</span>(training_set, stream_data,</span>
-<span id="cb7-2"><a href=""></a>                      non_conformity_measure,</span>
-<span id="cb7-3"><a href=""></a>                      betting_function,</span>
-<span id="cb7-4"><a href=""></a>                      <span class="at">th =</span> <span class="dv">1</span>, <span class="at">params_bf =</span> <span class="fu">list</span>(), ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>ICM_multi <span class="ot">&lt;-</span> <span class="cf">function</span>(training_set, stream_data,</span>
+<span id="cb7-2"><a></a>                      non_conformity_measure,</span>
+<span id="cb7-3"><a></a>                      betting_function,</span>
+<span id="cb7-4"><a></a>                      <span class="at">th =</span> <span class="dv">1</span>, <span class="at">params_bf =</span> <span class="fu">list</span>(), ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="small">
 <p>Detección de múltiples puntos de cambio con reentrenamiento</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>ICM_multi_adaptive <span class="ot">&lt;-</span> <span class="cf">function</span>(stream_data,</span>
-<span id="cb8-2"><a href=""></a>                               non_conformity_measure,</span>
-<span id="cb8-3"><a href=""></a>                               betting_function,</span>
-<span id="cb8-4"><a href=""></a>                               <span class="at">training_set =</span> <span class="cn">NULL</span>, <span class="at">training_size =</span> <span class="cn">NULL</span>,</span>
-<span id="cb8-5"><a href=""></a>                               <span class="at">m_retrain =</span> <span class="cn">NULL</span>, <span class="at">guard_band =</span> <span class="dv">0</span>,</span>
-<span id="cb8-6"><a href=""></a>                               ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>ICM_multi_adaptive <span class="ot">&lt;-</span> <span class="cf">function</span>(stream_data,</span>
+<span id="cb8-2"><a></a>                               non_conformity_measure,</span>
+<span id="cb8-3"><a></a>                               betting_function,</span>
+<span id="cb8-4"><a></a>                               <span class="at">training_set =</span> <span class="cn">NULL</span>, <span class="at">training_size =</span> <span class="cn">NULL</span>,</span>
+<span id="cb8-5"><a></a>                               <span class="at">m_retrain =</span> <span class="cn">NULL</span>, <span class="at">guard_band =</span> <span class="dv">0</span>,</span>
+<span id="cb8-6"><a></a>                               ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="icm-1" class="slide level2"><h2>ICM</h2>
 <div class="small">
 <p>Detección de un punto de cambio</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="2-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>ICM <span class="ot">&lt;-</span> <span class="cf">function</span>(training_set, stream_data,</span>
-<span id="cb9-2"><a href=""></a>                non_conformity_measure,</span>
-<span id="cb9-3"><a href=""></a>                betting_function,</span>
-<span id="cb9-4"><a href=""></a>                <span class="at">th =</span> <span class="dv">1</span>, <span class="at">params_bf =</span> <span class="fu">list</span>(), ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="2-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>ICM <span class="ot">&lt;-</span> <span class="cf">function</span>(training_set, stream_data,</span>
+<span id="cb9-2"><a></a>                non_conformity_measure,</span>
+<span id="cb9-3"><a></a>                betting_function,</span>
+<span id="cb9-4"><a></a>                <span class="at">th =</span> <span class="dv">1</span>, <span class="at">params_bf =</span> <span class="fu">list</span>(), ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="small">
 <p>Detección de múltiples puntos de cambio</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="2-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>ICM_multi <span class="ot">&lt;-</span> <span class="cf">function</span>(training_set, stream_data,</span>
-<span id="cb10-2"><a href=""></a>                      non_conformity_measure,</span>
-<span id="cb10-3"><a href=""></a>                      betting_function,</span>
-<span id="cb10-4"><a href=""></a>                      <span class="at">th =</span> <span class="dv">1</span>, <span class="at">params_bf =</span> <span class="fu">list</span>(), ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="2-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>ICM_multi <span class="ot">&lt;-</span> <span class="cf">function</span>(training_set, stream_data,</span>
+<span id="cb10-2"><a></a>                      non_conformity_measure,</span>
+<span id="cb10-3"><a></a>                      betting_function,</span>
+<span id="cb10-4"><a></a>                      <span class="at">th =</span> <span class="dv">1</span>, <span class="at">params_bf =</span> <span class="fu">list</span>(), ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="small">
 <p>Detección de múltiples puntos de cambio con reentrenamiento</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="2-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>ICM_multi_adaptive <span class="ot">&lt;-</span> <span class="cf">function</span>(stream_data,</span>
-<span id="cb11-2"><a href=""></a>                               non_conformity_measure,</span>
-<span id="cb11-3"><a href=""></a>                               betting_function,</span>
-<span id="cb11-4"><a href=""></a>                               <span class="at">training_set =</span> <span class="cn">NULL</span>, <span class="at">training_size =</span> <span class="cn">NULL</span>,</span>
-<span id="cb11-5"><a href=""></a>                               <span class="at">m_retrain =</span> <span class="cn">NULL</span>, <span class="at">guard_band =</span> <span class="dv">0</span>,</span>
-<span id="cb11-6"><a href=""></a>                               ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="2-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>ICM_multi_adaptive <span class="ot">&lt;-</span> <span class="cf">function</span>(stream_data,</span>
+<span id="cb11-2"><a></a>                               non_conformity_measure,</span>
+<span id="cb11-3"><a></a>                               betting_function,</span>
+<span id="cb11-4"><a></a>                               <span class="at">training_set =</span> <span class="cn">NULL</span>, <span class="at">training_size =</span> <span class="cn">NULL</span>,</span>
+<span id="cb11-5"><a></a>                               <span class="at">m_retrain =</span> <span class="cn">NULL</span>, <span class="at">guard_band =</span> <span class="dv">0</span>,</span>
+<span id="cb11-6"><a></a>                               ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="experimentos-y-resultados" class="slide level2"><h2>Experimentos y resultados</h2>
 <p>Todos los experimentos descritos en esta sección aprovechan las características de los paquetes <code>future</code>, <code>purrr</code>, <code>tidyr</code>, <code>dplyr</code> y <code>ggplot2</code>. <br></p>
@@ -496,6 +497,7 @@ S_0 = 1, \qquad S_n = \prod_{i=1}^{n} g(p_i)
 <li>GitHub: https://github.com/CQuiorzC</li>
 </ul>
 
+
 </section>
 </div>
   <div class="quarto-auto-generated-content" style="display: none;">
@@ -504,7 +506,7 @@ S_0 = 1, \qquad S_n = \prod_{i=1}^{n} g(p_i)
 </div>
 </div></div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="Presentacion_rday_2025_ICM_files/libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="Presentacion_rday_2025_ICM_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="Presentacion_rday_2025_ICM_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="Presentacion_rday_2025_ICM_files/libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="Presentacion_rday_2025_ICM_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="Presentacion_rday_2025_ICM_files/libs/revealjs/plugin/quarto-support/support.js"></script><script src="Presentacion_rday_2025_ICM_files/libs/revealjs/plugin/notes/notes.js"></script><script src="Presentacion_rday_2025_ICM_files/libs/revealjs/plugin/search/search.js"></script><script src="Presentacion_rday_2025_ICM_files/libs/revealjs/plugin/zoom/zoom.js"></script><script src="Presentacion_rday_2025_ICM_files/libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="site_libs/revealjs/plugin/notes/notes.js"></script><script src="site_libs/revealjs/plugin/search/search.js"></script><script src="site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/

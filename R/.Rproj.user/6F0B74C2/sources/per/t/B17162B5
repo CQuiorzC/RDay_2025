@@ -1,24 +1,26 @@
 {
-    "id": "9C02F9CC",
+    "id": "B17162B5",
     "path": "C:/Users/crist/OneDrive/Escritorio/R_Day_2025/RDay_2025/R/Experiments/Multiple_detectors.R",
     "project_path": "Experiments/Multiple_detectors.R",
     "type": "r_source",
-    "hash": "0",
+    "hash": "2026133049",
     "contents": "",
     "dirty": false,
-    "created": 1763082159415.0,
+    "created": 1763139946728.0,
     "source_on_save": false,
-    "relative_order": 6,
+    "relative_order": 3,
     "properties": {
         "source_window_id": "",
-        "Source": "Source"
+        "Source": "Source",
+        "cursorPosition": "30,16",
+        "scrollLine": "20"
     },
     "folds": "",
-    "lastKnownWriteTime": 1763082159,
+    "lastKnownWriteTime": 1763140205,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1763082159,
+    "last_content_update": 1763140205711,
     "read_only": false,
     "read_only_alternatives": []
 }

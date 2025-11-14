@@ -26,33 +26,31 @@ editor: visual
 
 <br/>
 
-::: incremental
 -   Objetivo y motivación
 -   Puntos de cambio
 -   Idea general de ICM
 -   Implementación en R
 -   Resultados de experimentos
-:::
+
 
 # Objetivo
 
 <br/>
 
-::: incremental
+
 -   Introducir las martingalas inductivas conformales (ICM).
 -   Presentar la implementación en R de los métodos
 -   Presentar los experimentos realizados y sus respectivos resultados.
-:::
+
 
 # Motivación
 
 <br/>
 
-::: incremental
 -   Detección de puntos de cambio es un problema transversal a muchas áreas.
 -   ICM presenta un método no parámetrico novedoso.
 -   Aumentar el catálogo de métodos ofrecidos por la librería tidychangepoint.
-:::
+
 
 # Puntos de cambio
 
@@ -91,11 +89,11 @@ El problema de puntos de cambio se formula de la siguiente manera:
 
 ::::::::: arrow-flow
 ::: arrow
-Observaciones intercambiables
+Intercambiabilidad
 :::
 
 ::: arrow
-Medida de no conformidad
+MNC
 :::
 
 ::: arrow

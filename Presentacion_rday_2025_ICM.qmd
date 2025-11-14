@@ -1,7 +1,7 @@
 ---
-title: "Presentación R Day 2025 — Martingalas inductivas conformales"
-subtitle: "ICM — Inductive Conformal Martingales"
-author: "Cristhian Quiroz Castaño"
+title: "Martingalas inductivas conformales: una implementación en R."
+subtitle: "R Day 2025"
+author: "Cristhian Quiroz Castaño - Universidad EAFIT"
 date: today
 lang: es
 format:
@@ -32,7 +32,6 @@ editor: visual
 -   Idea general de ICM
 -   Implementación en R
 -   Resultados de experimentos
--   Conclusiones
 :::
 
 # Objetivo
@@ -137,6 +136,10 @@ $$
 p_t = \frac{\lvert\{i \le t : \alpha_i > \alpha_t\}\rvert + U\,\lvert\{i \le t : \alpha_i = \alpha_t\}\rvert}{t}
 $$
 
+::: {.center .small}
+*Intuitivamente, entre más pequeño es el* $p$-valor, más extraña es la observación.
+:::
+
 ## Función de apuesta
 
 ::: goal
@@ -187,7 +190,8 @@ $$
 
 <br/>
 
-Esta suposición garantiza que: $$
+Esta suposición garantiza que: 
+$$
 \{p_i\}_{i=1}^{n} \sim Unif(0,1)
 $$
 
@@ -378,23 +382,43 @@ ICM_multi_adaptive <- function(stream_data,
 Todos los experimentos descritos en esta sección aprovechan las características de los paquetes `future`, `purrr`, `tidyr`, `dplyr` y `ggplot2`. <br/>
 
 ::: center
-![Librerias R](Presentacion_rday_2025_ICM_files/figure-revealjs/libreriashexalogor.png){width="55%"}
+![Librerias R](images/libreriashexalogor.png){width="55%"}
 :::
 
-## Sensibilidad al umbral
+## Planteamiento de los Monte Carlo
 
 -   Conjunto de entrenamiento $\mathcal{Z}$ de tamaño $m = 200$.
 -   Observaciones de entrenamiento y primer segmento $z_1, \dots, z_{\theta-1}$ con distribución $\mathcal{N}(0, 1)$.
 -   Segmento posterior al cambio $z_{\theta}, z_{\theta+1}, \dots$ con distribución $\mathcal{N}(\mu_1, 1)$.
 -   Métricas: probabilidad de falsa alarma $\mathbb{P}(\tau \le \theta)$ y retraso medio $\mathbb{E}(\tau - \theta \mid \tau > \theta)$.
 
+## Sensibilidad al umbral
+
+::: center
+![Sensibilidad al umbral](images/FA_vs_MD_mixt.png){width="70%"}
+:::
+
+## Sensibilidad al umbral
+
+::: center
+![Tabla](images/Tabla_2_mixturebf.png){width="70%"}
+:::
+
+<br/>
+
+Se hace más evidente en esta tabla cómo los métodos propuestos `MAD` y `IQR` presentan una leve reducción en el retardo medio
+
 ## Sensibilidad KNN
+
+::: center
+![Sensibilidad al K](images/KNNSENS.png){width="70%"}
+:::
 
 ## Precisión de los métodos múltiples
 
-# Conclusiones
-
-placeholder
+::: center
+![Precision multiples detectores](images/MULTIPRES.png){width="70%"}
+:::
 
 ## Referencias
 

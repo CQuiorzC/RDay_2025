@@ -9,9 +9,9 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-a75ea84b2aefd0354fe7c93493611467.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.33">
-<meta name="author" content="Cristhian Quiroz Castaño">
+<meta name="author" content="Cristhian Quiroz Castaño - Universidad EAFIT">
 <meta name="dcterms.date" content="2025-11-13">
-<title>R Day 2025 – Presentación R Day 2025 — Martingalas inductivas conformales</title>
+<title>R Day 2025 – Martingalas inductivas conformales: una implementación en R.</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -193,13 +193,13 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center"><h1 class="title">Presentación R Day 2025 — Martingalas inductivas conformales</h1>
-  <p class="subtitle">ICM — Inductive Conformal Martingales</p>
+<section id="title-slide" class="quarto-title-block center"><h1 class="title">Martingalas inductivas conformales: una implementación en R.</h1>
+  <p class="subtitle">R Day 2025</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Cristhian Quiroz Castaño 
+Cristhian Quiroz Castaño - Universidad EAFIT 
 </div>
 </div>
 </div>
@@ -213,7 +213,6 @@ Cristhian Quiroz Castaño
 <li class="fragment">Idea general de ICM</li>
 <li class="fragment">Implementación en R</li>
 <li class="fragment">Resultados de experimentos</li>
-<li class="fragment">Conclusiones</li>
 </ul></section><section id="objetivo" class="title-slide slide level1 center"><h1>Objetivo</h1>
 <p><br></p>
 <ul>
@@ -290,6 +289,9 @@ Cristhian Quiroz Castaño
 <p><span class="math display">\[
 p_t = \frac{\lvert\{i \le t : \alpha_i &gt; \alpha_t\}\rvert + U\,\lvert\{i \le t : \alpha_i = \alpha_t\}\rvert}{t}
 \]</span></p>
+<div class="center small">
+<p><em>Intuitivamente, entre más pequeño es el</em> <span class="math inline">\(p\)</span>-valor, más extraña es la observación.</p>
+</div>
 </section><section id="función-de-apuesta" class="slide level2"><h2>Función de apuesta</h2>
 <div class="goal">
 <p>Necesitamos un mecanismo que nos permita “hacer apuestas”:</p>
@@ -462,20 +464,46 @@ S_0 = 1, \qquad S_n = \prod_{i=1}^{n} g(p_i)
 <p>Todos los experimentos descritos en esta sección aprovechan las características de los paquetes <code>future</code>, <code>purrr</code>, <code>tidyr</code>, <code>dplyr</code> y <code>ggplot2</code>. <br></p>
 <div class="center">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="Presentacion_rday_2025_ICM_files/figure-revealjs/libreriashexalogor.png" style="width:55.0%"></p>
+<figure><p><img data-src="images/libreriashexalogor.png" style="width:55.0%"></p>
 <figcaption>Librerias R</figcaption></figure>
 </div>
 </div>
-</section><section id="sensibilidad-al-umbral" class="slide level2"><h2>Sensibilidad al umbral</h2>
+</section><section id="planteamiento-de-los-monte-carlo" class="slide level2"><h2>Planteamiento de los Monte Carlo</h2>
 <ul>
 <li>Conjunto de entrenamiento <span class="math inline">\(\mathcal{Z}\)</span> de tamaño <span class="math inline">\(m = 200\)</span>.</li>
 <li>Observaciones de entrenamiento y primer segmento <span class="math inline">\(z_1, \dots, z_{\theta-1}\)</span> con distribución <span class="math inline">\(\mathcal{N}(0, 1)\)</span>.</li>
 <li>Segmento posterior al cambio <span class="math inline">\(z_{\theta}, z_{\theta+1}, \dots\)</span> con distribución <span class="math inline">\(\mathcal{N}(\mu_1, 1)\)</span>.</li>
 <li>Métricas: probabilidad de falsa alarma <span class="math inline">\(\mathbb{P}(\tau \le \theta)\)</span> y retraso medio <span class="math inline">\(\mathbb{E}(\tau - \theta \mid \tau &gt; \theta)\)</span>.</li>
-</ul></section><section id="sensibilidad-knn" class="slide level2"><h2>Sensibilidad KNN</h2>
+</ul></section><section id="sensibilidad-al-umbral" class="slide level2"><h2>Sensibilidad al umbral</h2>
+<div class="center">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="images/FA_vs_MD_mixt.png" style="width:70.0%"></p>
+<figcaption>Sensibilidad al umbral</figcaption></figure>
+</div>
+</div>
+</section><section id="sensibilidad-al-umbral-1" class="slide level2"><h2>Sensibilidad al umbral</h2>
+<div class="center">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="images/Tabla_2_mixturebf.png" style="width:70.0%"></p>
+<figcaption>Tabla</figcaption></figure>
+</div>
+</div>
+<p><br></p>
+<p>Se hace más evidente en esta tabla cómo los métodos propuestos <code>MAD</code> y <code>IQR</code> presentan una leve reducción en el retardo medio</p>
+</section><section id="sensibilidad-knn" class="slide level2"><h2>Sensibilidad KNN</h2>
+<div class="center">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="images/KNNSENS.png" style="width:70.0%"></p>
+<figcaption>Sensibilidad al K</figcaption></figure>
+</div>
+</div>
 </section><section id="precisión-de-los-métodos-múltiples" class="slide level2"><h2>Precisión de los métodos múltiples</h2>
-</section></section><section><section id="conclusiones" class="title-slide slide level1 center"><h1>Conclusiones</h1>
-<p>placeholder</p>
+<div class="center">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="images/MULTIPRES.png" style="width:70.0%"></p>
+<figcaption>Precision multiples detectores</figcaption></figure>
+</div>
+</div>
 </section><section id="referencias" class="slide level2"><h2>Referencias</h2>
 <ul>
 <li>Volkhonskiy, D., Burnaev, E., Nouretdinov, I., Gammerman, A., Vovk, V. (2017). <em>Inductive Conformal Martingales for Change-Point Detection</em>. En <strong>Conformal and Probabilistic Prediction and Applications</strong>, PMLR 60, 1–22.</li>
